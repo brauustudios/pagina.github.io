@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>D</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://i.pinimg.com/originals/70/da/7c/70da7ceef81c8a8310ed8e6bed6d90d9.png" type="image/x-icon">
+  <link rel="icon" href="
+  https://i.pinimg.com/originals/70/da/7c/70da7ceef81c8a8310ed8e6bed6d90d9.png" type="image/x-icon">
   <style>
     * {
       box-sizing: border-box;
@@ -143,6 +144,44 @@
         width: 90%;
       }
     }
+
+    .play-button {
+      background-color: #ff69b4;
+      color: white;
+      padding: 10px 15px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .play-button:hover {
+      background-color: #d63384;
+    }
+
+    .message {
+      font-size: 1.1em;
+      color: #333;
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .enlace {
+      font-size: 1.4em;
+      color: #ff69b4;
+      margin-top: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      background-color: #ffe4e1;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .enlace:hover {
+      background-color: #ffb6c1;
+    }
   </style>
 </head>
 <body>
@@ -157,10 +196,16 @@
   </div>
 
   <!-- Música -->
-  <audio autoplay loop>
-    <source src="1.mp3" type="audio/mpeg">
+  <audio id="audio" loop>
+    <source src="cancion.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
+
+  <!-- Botón para reproducir música -->
+  <button class="play-button" id="playButton" onclick="toggleAudio()">⏯️</button>
+
+  <!-- Mensaje "Reproduce esto" -->
+  <div class="message" id="message">Reproduce esto 🎶</div>
 
   <!-- Contenido bonito -->
   <div class="heart floaty">💗</div>
@@ -174,6 +219,9 @@
 
   <div class="footer fade-in" style="animation-delay: 3s;">🌸 ola maw, ya viste qué bonito me quedó esto para ti 🌸</div>
 
+  <!-- Enlace "Entra aquí Tilín" -->
+  <a href="index2.html" class="enlace" target="_blank">Entra aquí Tilín</a>
+
   <!-- Máquina de escribir -->
   <script>
     const texto = " Y Por cierto, estás muy bonita ✨";
@@ -186,8 +234,22 @@
       }
     }
     setTimeout(escribir, 2500);
+
+    function toggleAudio() {
+      const audio = document.getElementById("audio");
+      const button = document.getElementById("playButton");
+      const message = document.getElementById("message");
+      
+      if (audio.paused) {
+        audio.play();
+        button.innerHTML = "⏸️";  // Cambia el botón a pausa
+        message.style.display = "none";  // Oculta el mensaje cuando se reproduce
+      } else {
+        audio.pause();
+        button.innerHTML = "⏯️";  // Cambia el botón a reproducir
+      }
+    }
   </script>
 
 </body>
 </html>
-
