@@ -6,7 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="
   https://i.pinimg.com/originals/70/da/7c/70da7ceef81c8a8310ed8e6bed6d90d9.png" type="image/x-icon">
+  
   <style>
+
+.decoracion-izquierda {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  margin-left: 10px;
+  filter: drop-shadow(0 0 5px #ff69b4);
+}
+
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -182,22 +193,50 @@
     .enlace:hover {
       background-color: #ffb6c1;
     }
+
+    .particle {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 10;
+  animation: floatDown 8s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatDown {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
   </style>
 </head>
 <body>
 
   <!-- Barra de tipo Spotify -->
   <div class="now-playing">
-    <img src="imagen.png" alt="Portada de la canción">
+    <img src="descarga.png" alt="Decoración" class="decoracion-izquierda">
+    <img src="cuco.png" alt="Portada de la canción">
     <div class="song-info">
-      <div class="song-title">I Smoked Away My Brain</div>
-      <div class="song-details">(I'm God x Demons Mashup) ft. Imogen Heap & Clams Casino</div>
+      <div class="song-title">Lover Is a Day</div>
+      <div class="song-details">Cuco • wannabewithu</div>
     </div>
   </div>
+  
 
   <!-- Música -->
   <audio id="audio" loop>
-    <source src="cancion.mp3" type="audio/mpeg">
+    <source src="cuco.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
 
@@ -205,51 +244,89 @@
   <button class="play-button" id="playButton" onclick="toggleAudio()">⏯️</button>
 
   <!-- Mensaje "Reproduce esto" -->
-  <div class="message" id="message">Reproduce esto 🎶</div>
+  <div class="message" id="message">Reproduce esto <3</div>
 
   <!-- Contenido bonito -->
-  <div class="heart floaty">💗</div>
+  <div class="heart floaty">
+    <img src="https://pngpix.com/images/file/minecraft-heart-icon-vpgjtbcgulwdkfxg.png" alt="Minecraft Heart" style="height: 40px;">
+  </div>
+  
 
-  <h1 class="fade-in">Hola Damaris 🌸</h1>
+  <h1 class="fade-in">Ola Damaris 🌸</h1>
 
-  <p class="fade-in" style="animation-delay: 1s;">Esta pequeña página es para ti. Solo quería decirte que me importas mucho, que eres muy especial para mí, y que cada día que hablo contigo aunque sea en mensaje hasta sonrio como tonto. 💫<br><br>
-    💕</p>
+  <p class="fade-in" style="animation-delay: 1s;">Ola actualize esta pagina que hice unicamente para ti para que recuerdes que te quiero muchisimo, que siempre contaras conmigo y mereces lo mejor del mundo 💫<br><br>
+    -Braii 💕</p>
 
   <h2 id="typewriter" class="fade-in" style="animation-delay: 2s;"></h2>
+  <!-- Contenedor para la imagen que aparecerá después -->
+<div id="imagenFinal" style="display: none; margin-top: 30px;">
+  <img src="https://instagram.fcjs1-2.fna.fbcdn.net/v/t39.30808-6/458337129_17863440906217634_9123790027097377888_n.webp?stp=dst-webp_s851x315&_nc_cat=1&ccb=1-7&_nc_sid=0ce033&_nc_ohc=3QUg92mVBQIQ7kNvwGKlxyh&_nc_oc=AdlaQbX-JQIY9hgOXdqzjSqgx7kqlsvcK9TMpgkCu6PPaQaxBkgDMVRSIia6aSoYjl8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fcjs1-2.fna&_nc_gid=cmrEUleYuhWk-W5IvrPvCA&oh=00_AfFSKBIb6rCCZBbH6ooLQeALmcJCjy4jcB96eyuU8f6HfQ&oe=680736E6" 
+       alt="Paplitwe 😎" style="max-width: 100%; border-radius: 15px; box-shadow: 0 0 20px #ff69b4aa;">
+</div>
 
-  <div class="footer fade-in" style="animation-delay: 3s;">🌸 ola maw, ya viste qué bonito me quedó esto para ti 🌸</div>
+<!-- Máquina de escribir -->
+<script>
+  const texto = " mira soy ese <3";
+  let i = 0;
+  function escribir() {
+    if (i < texto.length) {
+      document.getElementById("typewriter").innerHTML += texto.charAt(i);
+      i++;
+      setTimeout(escribir, 150);
+    } else {
+      // Cuando termine de escribir, muestra la imagen
+      document.getElementById("imagenFinal").style.display = "block";
+    }
+  }
+  setTimeout(escribir, 2500);
 
-  <!-- Enlace "Entra aquí Tilín" -->
-  <a href="index2.html" class="enlace" target="_blank">Entra aquí Tilín</a>
+  function toggleAudio() {
+    const audio = document.getElementById("audio");
+    const button = document.getElementById("playButton");
+    const message = document.getElementById("message");
+    
+    if (audio.paused) {
+      audio.play();
+      button.innerHTML = "⏸️";
+      message.style.display = "none";
+    } else {
+      audio.pause();
+      button.innerHTML = "⏯️";
+    }
+  }
+</script>
 
-  <!-- Máquina de escribir -->
+  <div class="footer fade-in" style="animation-delay: 3s;">🌸 ola maw, espero tu dia este lindo asi como tu 🌸</div>
+
+  
+
+ 
   <script>
-    const texto = " Y Por cierto, estás muy bonita ✨";
-    let i = 0;
-    function escribir() {
-      if (i < texto.length) {
-        document.getElementById("typewriter").innerHTML += texto.charAt(i);
-        i++;
-        setTimeout(escribir, 150);
-      }
+    const particleImages = [
+      "https://media.forgecdn.net/avatars/795/386/638154632642959069.png",
+      "https://pnghq.com/wp-content/uploads/2023/02/minecraft-poppy-png-3273.png"
+    ];
+  
+    function createParticle() {
+      const particle = document.createElement("img");
+      particle.src = particleImages[Math.floor(Math.random() * particleImages.length)];
+      particle.className = "particle";
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.top = "-50px";
+      particle.style.animationDuration = (5 + Math.random() * 5) + "s";
+      particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(particle);
+  
+      // Eliminar después de terminar animación
+      setTimeout(() => {
+        particle.remove();
+      }, 10000);
     }
-    setTimeout(escribir, 2500);
-
-    function toggleAudio() {
-      const audio = document.getElementById("audio");
-      const button = document.getElementById("playButton");
-      const message = document.getElementById("message");
-      
-      if (audio.paused) {
-        audio.play();
-        button.innerHTML = "⏸️";  // Cambia el botón a pausa
-        message.style.display = "none";  // Oculta el mensaje cuando se reproduce
-      } else {
-        audio.pause();
-        button.innerHTML = "⏯️";  // Cambia el botón a reproducir
-      }
-    }
+  
+    // Crea varias partículas cada segundo
+    setInterval(createParticle, 600);
   </script>
+  
 
 </body>
 </html>
